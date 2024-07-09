@@ -8,13 +8,14 @@ export default function Profile() {
 
     const router = useRouter()
     const [data, setData] = useState("")
-
+    const [loading, setLoading] = useState(false)
     
   const getUserDetails = async () => {
     try {
+      setLoading(true);
       const response = await axios.get("/api/users/me");
       setData(response.data.data._id);
-      router.push(`/profile/${data}`);
+      router.push(`/profile/${response.data.data._id}`);
     } catch (error: any) {
       toast.error("Something went wrong, please try again later.");
       console.log("Server Issue");
@@ -25,6 +26,7 @@ export default function Profile() {
      
   const logout = async () => {
     try {
+      setLoading(true);
       const response = await axios.get("/api/users/logout");
       toast.success("Logged out successfully.");
       router.push("/login");
@@ -42,7 +44,7 @@ export default function Profile() {
       className="flex flex-col bg-white p-8 w-full m-2 rounded-lg border-black border-solid border-[5px] shadow-t-xl  shadow-white md:w-[30%] "
     >
       <h1 className="text-black text-4xl text-center font-bold ">
-        User Profile
+        {loading ? "Loading...": "User Profile"}
       </h1>
 
       <hr className='bg-black w-full text-black p-[1px] mt-4 mb-4 '/>

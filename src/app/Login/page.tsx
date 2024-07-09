@@ -8,17 +8,15 @@ import Link from "next/link";
 export default function Login() {
   const router = useRouter();
 
-  const [user, setUser] = useState({
-    email: "",
-    password: "",
-  });
+  
+  const [expand, setExpand] = useState(false);
 
   const [loading, setLoading] = useState(false);
 
-  const onSubmit = async () => {
+  const onSubmit = async (formData:any) => {
     try {
       setLoading(true);
-      const response = await axios.post("/api/users/login", user);
+      const response = await axios.post("/api/users/login", formData);
 
       console.log("Login success", response.data);
       setLoading(false);
@@ -33,16 +31,16 @@ export default function Login() {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    setUser({
+    const formData = {
       email: e.target.email.value,
       password: e.target.password.value,
-    });
-    console.log(user);
-    onSubmit();
+    };
+    console.log(formData);
+    onSubmit(formData);
   };
 
   return (
-    <div className="h-screen w-full flex justify-center items-center bg-[rgb(13,17,23)]">
+    <div className="h-screen w-full flex justify-center items-center bg-[rgb(13,17,23)] flex flex-col">
       <form
         onSubmit={(e) => handleFormSubmit(e)}
         className="flex flex-col bg-white p-8 w-full m-2 rounded-lg border-black border-solid border-[5px] shadow-t-xl  shadow-white md:w-[25%] "
@@ -81,6 +79,14 @@ export default function Login() {
           </Link>
         </p>
       </form>
+      <div className="p-4 bg-white text-black w-full m-2 rounded-lg border-black border-solid border-[5px] md:w-[25%] flex justify-between items-center transition-all cursor-pointer ease-linear" onClick={()=> {expand ? setExpand(false): setExpand(true)}}><p>Check Dummy Data </p>
+      <p>{expand ? "▶":"▼"}</p>
+      {expand && <p>
+        <strong>Email : </strong>1@test.com <br/>
+        <strong>Password :</strong> 12345678 
+      </p>}
+      </div>
     </div>
+
   );
 }

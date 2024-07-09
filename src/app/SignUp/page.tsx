@@ -18,24 +18,29 @@ function SignupPage() {
 
     const [buttonDisabled, setButtonDisabled] = useState(true)
     
+    const [sendemail, setSendEmail] = useState(false)
     
     const [loading, setLoading] = useState(false)
 
-    const onSubmit = async () => {
+    const [errors, setErrors] = useState(false)
+
+    const onSubmit = async (formData) => {
         try {
             
                 setLoading(true)
                 setButtonDisabled(true)
-                const response = await axios.post("/api/users/signup", user)
+                const response = await axios.post("/api/users/signup", formData)
 
                 console.log("Signup success", response.data)
                 setLoading(false)
-                router.push("/login")
+                setSendEmail(true)
+                setErrors(false)
 
         } catch (error: any) {
             console.log("Server Issue")
             console.log(error)
             setLoading(false)
+            setErrors(true)
             toast.error("Something went wrong, please try again later.")
         }
     }
@@ -43,12 +48,19 @@ function SignupPage() {
 
     const handleFormSubmit = (e) => {
         e.preventDefault()
+        
+        const formData = {
+          email: e.target.email.value,
+          password : e.target.password.value,
+          username : e.target.username.value
+        }
+        
         setUser({
           email: e.target.email.value,
           password : e.target.password.value,
           username : e.target.username.value
         })
-        onSubmit();
+        onSubmit(formData);
     }
 
 
@@ -61,6 +73,11 @@ function SignupPage() {
         <input type="text" name="email" placeholder="Email" id="email" className='w-full border-solid border-[1px] border-black p-4 rounded-sm text-black'/>
         <input type="password" name="password" placeholder="Password" id="password" className='w-full border-solid border-[1px] border-black p-4 rounded-sm text-black'/>
         </div>
+
+        {sendemail && <p className='text-black text-center mt-4 font-semibold'>Verify your Email, <Link className='underline font-extrabold' href="/">Check Mailbox</Link></p>}
+
+        {errors && <p className='text-red-700 text-center mt-4 font-semibold'>Error : Retry Once</p>}
+
         <button  className={`w-full p-4 bg-black mt-6 text-lg hover:bg-[#0d1117] transition-all ease-linear hover:scale-105 ` }>Register</button>
         <p className='text-black text-center pt-4'>Not have Account? <Link href='/login' className=' cursor-pointer underline font-semibold '>Login</Link></p>
       </form>
