@@ -22,7 +22,7 @@ function Page({params} : any) {
             setLoading(true);
           const response = await axios.get("/api/users/logout");
           toast.success("Logged out successfully.");
-          router.push("/login");
+          router.push("/Login");
         } catch (error: any) {
           toast.error("Something went wrong, please try again later.");
           console.log("Server Issue");
