@@ -20,6 +20,7 @@
 7) Accessing and updating cookies in NextJs
 8) Using middlewares - How to restrict non-logged in users from accessing non-public URLs
 9) Redirection using Navigation Router
+10) Handle and fix errors while deploying projects
 
 ### Frameworks/Packages Used ->
 1) NextJs
@@ -34,3 +35,5 @@
 
 ### Languages Used ->
 1) TypeScript
+
+### Live Link -> https://next-auth-vaibhavgupta5.netlify.app/
