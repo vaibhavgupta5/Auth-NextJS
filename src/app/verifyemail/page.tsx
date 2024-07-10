@@ -33,9 +33,10 @@ function VerifyEmailPage() {
         }
     }
 
+
+    // takes out token after ?token= from url using windows.location
     useEffect(() =>{
         const userToken = window.location.search.split("=")[1]
-
         setToken(userToken || "")
     }, [])
 

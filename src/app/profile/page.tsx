@@ -15,6 +15,7 @@ export default function Profile() {
       setLoading(true);
       const response = await axios.get("/api/users/me");
       setData(response.data.data._id);
+      //creates dynamic new route adds like */profile/6758gwwr6dr6 this page can be handeled by making a [id] folder in profile then create page.tsx for content
       router.push(`/profile/${response.data.data._id}`);
     } catch (error: any) {
       toast.error("Something went wrong, please try again later.");

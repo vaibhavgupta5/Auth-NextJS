@@ -1,5 +1,6 @@
 import mongoose from "mongoose"
 
+// setting up database connection, copy paste from mongodb docs, well we are creating a function that can be called by server to setup connection
 export async function connect() {
     try {
         mongoose.connect(process.env.MONGO_URI!)

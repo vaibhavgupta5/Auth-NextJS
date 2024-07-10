@@ -1,5 +1,6 @@
 import mongoose from "mongoose"
 
+// same as normal backend
 const userSchema = new mongoose.Schema({
     username:{
         type: String,
@@ -36,5 +37,6 @@ const userSchema = new mongoose.Schema({
         type: Date,
     },
 })
-    
+
+// checks if model already exists on server, if not creates new one using userSchema
 export const User = mongoose.models.users || mongoose.model("users", userSchema)

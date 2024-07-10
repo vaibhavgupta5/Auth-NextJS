@@ -4,11 +4,11 @@ import {NextRequest, NextResponse} from 'next/server'
 
 connect();
 
+//we need to give request type like here GET
 export async function GET(request: NextRequest){
     try {
-      
-            const response =  NextResponse.json({message: "Logout Successfuly"},{status: 200})       
-
+          const response =  NextResponse.json({message: "Logout Successfully"},{status: 200})       
+          //setting cookies to blank  
             response.cookies.set("token", "", {
                 httpOnly: true,
                 expires: new Date(0)

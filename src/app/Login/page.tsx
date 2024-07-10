@@ -6,7 +6,8 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 export default function Login() {
-  const router = useRouter();
+
+  const router = useRouter(); // it is like navigation() used to rediect
 
   
   const [expand, setExpand] = useState(false);
@@ -16,7 +17,7 @@ export default function Login() {
   const onSubmit = async (formData:any) => {
     try {
       setLoading(true);
-      const response = await axios.post("/api/users/login", formData);
+      const response = await axios.post("/api/users/login", formData); // fetching data from api using axios, second para is json data you want to send
 
       console.log("Login success", response.data);
       setLoading(false);
@@ -29,7 +30,7 @@ export default function Login() {
     }
   };
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = (e:any) => {
     e.preventDefault();
     const formData = {
       email: e.target.email.value,
@@ -40,7 +41,7 @@ export default function Login() {
   };
 
   return (
-    <div className="h-screen w-full flex justify-center items-center bg-[rgb(13,17,23)] flex flex-col">
+    <div className="h-screen w-full flex justify-center items-center bg-[rgb(13,17,23)] flex flex-col gdh">
       <form
         onSubmit={(e) => handleFormSubmit(e)}
         className="flex flex-col bg-white p-8 w-full m-2 rounded-lg border-black border-solid border-[5px] shadow-t-xl  shadow-white md:w-[25%] "
