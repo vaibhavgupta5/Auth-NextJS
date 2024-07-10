@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react'
 import toast from 'react-hot-toast';
 
+// params are superpower in next.. takes the url after profile/
 function Page({params} : any) {
 
     const router = useRouter()
