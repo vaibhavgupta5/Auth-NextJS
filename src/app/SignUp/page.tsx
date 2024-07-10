@@ -84,7 +84,7 @@ function SignupPage() {
         {errors && <p className='text-red-700 text-center mt-4 font-semibold'>Error : Retry Once</p>}
 
         <button  className={`w-full p-4 bg-black mt-6 text-lg hover:bg-[#0d1117] transition-all ease-linear hover:scale-105 ` }>Register</button>
-        <p className='text-black text-center pt-4'>Not have Account? <Link href='/login' className=' cursor-pointer underline font-semibold '>Login</Link></p>
+        <p className='text-black text-center pt-4'>Not have Account? <Link href='/Login' className=' cursor-pointer underline font-semibold '>Login</Link></p>
       </form>
     </div>
   )
