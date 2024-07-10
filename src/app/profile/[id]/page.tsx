@@ -4,19 +4,12 @@ import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react'
 import toast from 'react-hot-toast';
 
-// params are a superpower in next.. takes the url after profile/
+// params are superpower in next.. takes the url after profile/
 function Page({params} : any) {
 
-
-    type UserData = {
-  email: string;
-  username: string;
-  isVerified: boolean;
-};
-    
     const router = useRouter()
     const [loading, setLoading] = useState(false)
-  const [data, setData] = useState<UserData | null>(null);
+    const [data, setData] = useState("")
 
     const logout = async () => {
         try {
@@ -59,11 +52,11 @@ function Page({params} : any) {
 
       <hr className='bg-black w-full text-black p-[1px] mt-4 mb-4 '/>
 
-      <div className='text-black p-4 w-full text-center'><strong>UserId:</strong> {params.id}
-          {data && <><br/><strong>Email:</strong> {data.email}
+      {data !== "" && <div className='text-black p-4 w-full text-center'><strong>UserId:</strong> {params.id}
+        <br/><strong>Email:</strong> {data.email}
         <br/><strong>Username:</strong> {data.username}
         <br/><strong>Verified:</strong> {data.isVerified === true ? "Yes" : "No"}
-        </div></>}
+        </div>}
           <hr className='bg-black w-full text-black p-[1px] mt-4 mb-4'/>
       
 
