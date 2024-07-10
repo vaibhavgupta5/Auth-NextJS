@@ -6,7 +6,8 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 export default function Login() {
-  const router = useRouter();
+
+  const router = useRouter(); // it is like navigation() used to rediect
 
   
   const [expand, setExpand] = useState(false);
@@ -16,7 +17,7 @@ export default function Login() {
   const onSubmit = async (formData:any) => {
     try {
       setLoading(true);
-      const response = await axios.post("/api/users/login", formData);
+      const response = await axios.post("/api/users/login", formData); // fetching data from api using axios, second para is json data you want to send
 
       console.log("Login success", response.data);
       setLoading(false);
