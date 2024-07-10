@@ -30,7 +30,7 @@ export default function Login() {
     }
   };
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = (e:any) => {
     e.preventDefault();
     const formData = {
       email: e.target.email.value,
