@@ -60,10 +60,10 @@ function Page({params} : any) {
       <hr className='bg-black w-full text-black p-[1px] mt-4 mb-4 '/>
 
       <div className='text-black p-4 w-full text-center'><strong>UserId:</strong> {params.id}
-        <br/><strong>Email:</strong> {data.email}
+          {data && <><br/><strong>Email:</strong> {data.email}
         <br/><strong>Username:</strong> {data.username}
         <br/><strong>Verified:</strong> {data.isVerified === true ? "Yes" : "No"}
-        </div>
+        </div></>}
           <hr className='bg-black w-full text-black p-[1px] mt-4 mb-4'/>
       
 
