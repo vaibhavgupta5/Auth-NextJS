@@ -4,7 +4,6 @@ import {NextRequest, NextResponse} from 'next/server'
 import bcryptjs from 'bcryptjs'
 import { sendEmail } from "@/helper/mailer";
 
-console.log("ok")
 connect();
 
 export async function POST(request: NextRequest){
@@ -20,16 +19,18 @@ export async function POST(request: NextRequest){
             return NextResponse.json({error: "User Already Exists"},{status: 400})
         }
 
+        //hashed password , 10 layer, using bcrypt
         const hashedPassword = await bcryptjs.hash(password, 10)
 
+        //creates new user
         const newUser = new User({
             username,
             email,
             password: hashedPassword
         })
 
+        //save new user
         const savedUser = await newUser.save()
-        console.log(savedUser)
 
 
         //sending email
