@@ -6,7 +6,7 @@ import { useEffect } from "react";
 export default function Home() {
   const router = useRouter();
 
-  // added redirection that when visites */ it redirects to */login
+  // Added redirection that when visites */ it redirects to */login
   useEffect(() => {
     router.push("/login");
   },[]);
