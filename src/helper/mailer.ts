@@ -2,12 +2,15 @@ import { User } from "@/Models/userModel";
 import nodemailer from "nodemailer"
 import bcryptjs from 'bcryptjs'
 
+// using mailtrap to do so.. dummy email
+
 export const sendEmail = async ({email, emailType, userId}:any) =>{
 
     try {
 
         const hashedToken = await bcryptjs.hash(userId.toString(), 10)
-
+        
+        // setting new token in database
 
         if(emailType === "VERIFY"){
             await User.findByIdAndUpdate(userId, {
@@ -22,7 +25,8 @@ export const sendEmail = async ({email, emailType, userId}:any) =>{
             }
             }) 
         }
-         
+
+        //copy paste fron mailtrap docs
         var transport = nodemailer.createTransport({
             host: "sandbox.smtp.mailtrap.io",
             port: 2525,
@@ -37,6 +41,7 @@ export const sendEmail = async ({email, emailType, userId}:any) =>{
             from: 'vaibhav@zeta.dev', // sender address
             to: email, // list of receivers
             subject: emailType === "VERIFY" ? "Verify Your Password" : "Reset your Password",
+            // url will be like - */verifyemail?token=276wfwqtdwe5r45wede , verifytoken page is already made and token in it that can be taken out using params.. dynaminic ur;
             html: `<p>Click <a href="${process.env.DOMAIN}/verifyemail?token=${hashedToken}">here</a> to : ${emailType === "VERIFY" ? "Verify your Email" : "Reset your Password"}
             <br> ${process.env.DOMAIN}/verifyemail?token=${hashedToken}
             </p>`, // html body
