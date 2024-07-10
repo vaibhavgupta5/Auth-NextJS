@@ -4,12 +4,19 @@ import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react'
 import toast from 'react-hot-toast';
 
-// params are superpower in next.. takes the url after profile/
+// params are a superpower in next.. takes the url after profile/
 function Page({params} : any) {
 
+
+    type UserData = {
+  email: string;
+  username: string;
+  isVerified: boolean;
+};
+    
     const router = useRouter()
     const [loading, setLoading] = useState(false)
-    const [data, setData] = useState("")
+  const [data, setData] = useState<UserData | null>(null);
 
     const logout = async () => {
         try {
