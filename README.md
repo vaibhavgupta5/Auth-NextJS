@@ -14,13 +14,14 @@
 1) Creating NextJS project
 2) Folder structure of Next
 3) Implementing backend and frontend
-4) Difference between Server and Client side rendering
-5) Creating dynamic routes
-6) How to send emails using Mailtrap
-7) Accessing and updating cookies in NextJs
-8) Using middlewares - How to restrict non-logged in users from accessing non-public URLs
-9) Redirection using Navigation Router
-10) Handle and fix errors while deploying projects
+4) Using advance API requests
+5) Difference between Server and Client side rendering
+6) Creating dynamic routes
+7) How to send emails using Mailtrap
+8) Accessing and updating cookies in NextJs
+9) Using middlewares - How to restrict non-logged in users from accessing non-public URLs
+10) Redirection using Navigation Router
+11) Handle and fix errors while deploying projects
 
 ### Frameworks/Packages Used ->
 1) NextJs
