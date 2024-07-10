@@ -15,6 +15,11 @@ function SignupPage() {
         username : ""
     })
 
+    interface FormData {
+      email: string;
+      password: string;
+      username: string;      
+}
 
     const [buttonDisabled, setButtonDisabled] = useState(true)
     
@@ -24,7 +29,7 @@ function SignupPage() {
 
     const [errors, setErrors] = useState(false)
 
-    const onSubmit = async (formData) => {
+    const onSubmit = async (formData : FormData) => {
         try {
             
                 setLoading(true)
@@ -46,10 +51,10 @@ function SignupPage() {
     }
 
 
-    const handleFormSubmit = (e) => {
+    const handleFormSubmit = (e:any) => {
         e.preventDefault()
         
-        const formData = {
+        const formData : FormData = {
           email: e.target.email.value,
           password : e.target.password.value,
           username : e.target.username.value
