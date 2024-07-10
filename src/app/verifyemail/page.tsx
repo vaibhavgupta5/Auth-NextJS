@@ -13,7 +13,7 @@ function VerifyEmailPage() {
     const [loading, setLoading] = useState(false)    
 
 
-    const handleFormSubmit = async (e) => {
+    const handleFormSubmit = async (e:any) => {
         setLoading(true)
         e.preventDefault()
         await verifyEmail()
