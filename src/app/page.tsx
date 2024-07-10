@@ -8,7 +8,7 @@ export default function Home() {
 
   // Added redirection that when visites */ it redirects to */login
   useEffect(() => {
-    router.push("/login");
+    router.push("/Login");
   },[]);
 
   return <>Home</>;
