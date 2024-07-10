@@ -1,0 +1,21 @@
+#### Difference between Server Side and Client Rendering ->
+  Server side is faster and used in Nextjs. It preloads the data on server and is good for SEO as google reads keywords first.. Where as in client side data loads when client/user visits site.. not good for SEO. But when want to deal with hooks or dynamic data we need Client side render.. To achieve in next need to add 'use client' at top of page.
+
+### Folder Structure in NEXTJS ->
+  src
+  | Models - (Stores User Models)
+  |  | userModels.ts
+  | app - (Stores main frontend and backend)
+  |  | api - (contains backend)
+  |  |  | Login - (creates route /api/login)
+  |  |  |  | route.ts - (name needs to be same)  
+  |  |  login - (containes frontend of login page - /login)
+  |  |  |  page.tsx - (name should be same always)
+  |  |  |  [id] - (makes sub route like /login/id, id can be any thing, check more in app/profile/[id])
+  |  |  |  |  page.tsx
+  |  |  page.tsx - (it is home page, contains frontend of home page)
+  | dbConfig - (Connects MongoDB database)
+  |  | dbConfig.ts
+  | helper - (Universal functions like mailer or getting data from cookies)
+  | middleware.ts - (To verify stuffs, check nextjs middleware docs)
+  
